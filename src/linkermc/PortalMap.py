@@ -2,18 +2,6 @@ from rtree import index as rtree
 
 rtree.Index().contains
 
-def CheckDim(dimension)
-    if dimension != "nether" and dimension != "overworld":
-        raise ValueError(f"dimension has value {dimension}, not nether or overworld")
-    return dimension
-
-def IsNether(dimension):
-    CheckDim(dimension)
-    return (dimension == "nether")
-
-def OtherDim(dimension):
-    return "overworld" if IsNether(dimension) else "nether"
-
 class PortalMap:
     # Portals stored in a list, corresponding index inserted into an R-tree for spatial indexing
     def __init__(self):
@@ -60,19 +48,6 @@ class PortalMap:
         # Find closest portals, check they're in range
         
 
-class Portal:
-    def __init__(self, location, size, dimension, name=None):
-        self.location = location #(x,y,z) (where x,y,z are the lowest values in the coordinate range, i.e. bottom left corner)
-        self.size = size #(x_size,y_size,z_size)
-        self.dimension = CheckDim(dimension)
-        self.name = name
-
-    def Coordinates(self, dimension):
-        CheckDim(dimension)
-        x,y,z = self.location
-        if dimension == self.dimension: return (x,y,z)
-        if dimension == "overworld": return (x*8, y, z*8)
-        else: return (x//8, y, z//8)
 
 # Example usage
 portal_map = PortalMap()

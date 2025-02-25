@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "linkermc"
+version = "0.0.1"
+authors = [
+  { name="Harry Cooke", email="hcooke006@aol.com" },
+]
+description = "A Nether portal linking calculator for Minecraft"
+readme = "README.md"
+requires-python = ">=3.8"
+license = "AGPL-3.0-or-later"
+license-files = ["LICENSE"]
+
+[project.urls]
+Homepage = "https://github.com/hacooke/linker"
+Issues = "https://github.com/hacooke/linker/issues"
