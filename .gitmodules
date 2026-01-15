@@ -1,0 +1,3 @@
+[submodule "src/linkermc/importworld/libanvil"]
+	path = src/linkermc/importworld/libanvil
+	url = https://github.com/majestic53/libanvil.git

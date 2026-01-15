@@ -1,6 +1,6 @@
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["py-build-cmake>=0.3.0","pybind11>=2.6.0"]
+build-backend = "py_build_cmake.build"
 
 [project]
 name = "linkermc"
@@ -10,10 +10,30 @@ authors = [
 ]
 description = "A Nether portal linking calculator for Minecraft"
 readme = "README.md"
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 license = "AGPL-3.0-or-later"
 license-files = ["LICENSE"]
 
 [project.urls]
 Homepage = "https://github.com/hacooke/linker"
 Issues = "https://github.com/hacooke/linker/issues"
+
+[tool.py-build-cmake.module]
+name = "linkermc"
+directory = "src"
+
+[tool.py-build-cmake.sdist]
+include = ["CMakeLists.txt", "src/linkermc/importworld"]
+exclude = []
+
+[tool.py-build-cmake.cmake]
+minimum_version = "3.17"
+build_type = "Release"
+source_path = "." # Containing CMakeLists.txt
+options = {}
+args = ["-Wdev"]
+build_args = ["-j"]
+build_tool_args = []
+install_args = ["--verbose"]
+install_components = ["python_modules", "python_stubs"]
+env = {}
